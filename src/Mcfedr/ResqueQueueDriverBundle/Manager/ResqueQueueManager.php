@@ -10,6 +10,7 @@ use Mcfedr\QueueManagerBundle\Exception\WrongJobException;
 use Mcfedr\QueueManagerBundle\Manager\QueueManager;
 use Mcfedr\QueueManagerBundle\Queue\Job;
 use Mcfedr\ResqueQueueDriverBundle\Queue\ResqueJob;
+use Symfony\Component\Filesystem\Filesystem;
 
 class ResqueQueueManager implements QueueManager
 {
@@ -67,7 +68,8 @@ class ResqueQueueManager implements QueueManager
 
         //Convert root_dir to be relative to the resque bundle paths, this makes it possible to deploy workers in different places
         if (array_key_exists('kernel.root_dir', $this->kernelOptions)) {
-            $this->kernelOptions['kernel.root_dir'] = $this->getRelativePath(__DIR__, $this->kernelOptions['kernel.root_dir']);
+            $this->kernelOptions['kernel.root_dir'] = (new Filesystem())
+                ->makePathRelative($this->kernelOptions['kernel.root_dir'], __DIR__);
         }
     }
 
@@ -121,38 +123,5 @@ class ResqueQueueManager implements QueueManager
         if (\ResqueScheduler::removeDelayedJobFromTimestamp($job->getWhen(), $job->getQueue(), $job->getClass(), $job->getResqueArguments(), $job->isTrackStatus()) < 1) {
             throw new NoSuchJobException('No jobs were found');
         }
-    }
-
-    private function getRelativePath($from, $to)
-    {
-        // some compatibility fixes for Windows paths
-        $from = is_dir($from) ? rtrim($from, '\/') . '/' : $from;
-        $to   = is_dir($to)   ? rtrim($to, '\/') . '/'   : $to;
-        $from = str_replace('\\', '/', $from);
-        $to   = str_replace('\\', '/', $to);
-
-        $from     = explode('/', $from);
-        $to       = explode('/', $to);
-        $relPath  = $to;
-
-        foreach($from as $depth => $dir) {
-            // find first non-matching dir
-            if($dir === $to[$depth]) {
-                // ignore this directory
-                array_shift($relPath);
-            } else {
-                // get number of remaining dirs to $from
-                $remaining = count($from) - $depth;
-                if($remaining > 1) {
-                    // add traversals up to first matching dir
-                    $padLength = (count($relPath) + $remaining - 1) * -1;
-                    $relPath = array_pad($relPath, $padLength, '..');
-                    break;
-                } else {
-                    $relPath[0] = './' . $relPath[0];
-                }
-            }
-        }
-        return implode('/', $relPath);
     }
 }

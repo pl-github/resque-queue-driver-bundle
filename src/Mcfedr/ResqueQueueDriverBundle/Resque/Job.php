@@ -7,6 +7,7 @@ namespace Mcfedr\ResqueQueueDriverBundle\Resque;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
@@ -62,10 +63,14 @@ class Job
      */
     private function createKernel()
     {
-        $finder = new Finder();
-        $finder->name('*Kernel.php')->depth(0)->in(__DIR__ . '/' . $this->args['kernel_options']['kernel.root_dir']);
-        $results = iterator_to_array($finder);
-        $file = current($results);
+        $iterator = (new Finder())
+            ->name('*Kernel.php')
+            ->depth(0)
+            ->in(__DIR__ . '/' . $this->args['kernel_options']['kernel.root_dir'])
+            ->getIterator();
+        $iterator->rewind(); //Seems weird that I have rewind a new iterator, but I do
+        /** @var SplFileInfo $file */
+        $file = $iterator->current();
         $class = $file->getBasename('.php');
 
         require_once $file;
