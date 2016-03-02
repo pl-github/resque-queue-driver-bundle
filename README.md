@@ -2,14 +2,14 @@
 
 A driver for [Queue Manager Bundle](https://github.com/mcfedr/queue-manager-bundle) that uses resque
 
-[![Latest Stable Version](https://poser.pugx.org/mcfedr/queue-driver-resque-bundle/v/stable.png)](https://packagist.org/packages/mcfedr/queue-driver-resque-bundle)
-[![License](https://poser.pugx.org/mcfedr/queue-driver-resque-bundle/license.png)](https://packagist.org/packages/mcfedr/queue-driver-resque-bundle)
+[![Latest Stable Version](https://poser.pugx.org/mcfedr/resque-queue-driver-bundle/v/stable.png)](https://packagist.org/packages/mcfedr/resque-queue-driver-bundle)
+[![License](https://poser.pugx.org/mcfedr/resque-queue-driver-bundle/license.png)](https://packagist.org/packages/mcfedr/resque-queue-driver-bundle)
 
 ## Install
 
 ### Composer
 
-    composer require mcfedr/queue-driver-resque-bundle
+    composer require mcfedr/resque-queue-driver-bundle
 
 ### AppKernel
 
@@ -37,7 +37,7 @@ With this bundle installed you can setup your queue manager config similar to th
 
 This will create a `QueueManager` service named `"mcfedr_queue_manager.default"`
 
-## Options
+## Options to `QueueManager::put`
 
 * `when` - A `DateTime` object for when to perform the job, allows future scheduling
 * `queue` - A `string` with the name of a queue

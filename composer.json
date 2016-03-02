@@ -1,7 +1,7 @@
 {
     "name": "mcfedr/resque-queue-driver-bundle",
     "type": "symfony-bundle",
-    "description": "A bundle for managing job queues",
+    "description": "A bundle for running symfony background tasks with Redis backend",
     "keywords": ["queue", "job", "schedule", "task", "resque", "redis"],
     "autoload": {
         "psr-4": { "Mcfedr\\ResqueQueueDriverBundle\\": "src/Mcfedr/ResqueQueueDriverBundle/"}
