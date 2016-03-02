@@ -22,7 +22,7 @@ class ResqueQueueManager implements QueueManager
     /**
      * @var string
      */
-    protected $defaultQueue;
+    private $defaultQueue;
 
     /**
      * @var bool
