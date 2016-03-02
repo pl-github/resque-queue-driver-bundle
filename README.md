@@ -34,8 +34,13 @@ With this bundle installed you can setup your queue manager config similar to th
                     host: 127.0.0.1
                     port: 11300
                     default_queue: mcfedr_queue
+                    track_status: false
 
 This will create a `QueueManager` service named `"mcfedr_queue_manager.default"`
+
+* `host` and `port` - Where is your Redis server
+* `default_queue` - Name of the default queue to use
+* `track_status` - Set to `true` to enable extra job tracking data to be stored in redis. Useful for debugging.
 
 ## Options to `QueueManager::put`
 
