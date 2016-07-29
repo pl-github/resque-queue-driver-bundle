@@ -5,6 +5,7 @@
 
 namespace Mcfedr\ResqueQueueDriverBundle\Resque;
 
+use Mcfedr\ResqueQueueDriverBundle\Queue\ResqueJob;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
@@ -35,7 +36,7 @@ class Job
 
     public function perform()
     {
-        $this->getContainer()->get($this->args['name'])->execute($this->args['arguments']);
+        $this->getContainer()->get('mcfedr_queue_manager.job_executor')->executeJob(new ResqueJob($this->args, [], null, null, $this->queue, static::class, null));
     }
 
     /**
