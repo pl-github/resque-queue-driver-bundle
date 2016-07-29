@@ -113,7 +113,7 @@ class ResqueQueueManager implements QueueManager
         }
 
         if (!$job->isFutureJob()) {
-            throw new WrongJobException('Resque queue manager can only delete future jobs');
+            throw new NoSuchJobException('Resque queue manager can only delete future jobs');
         }
 
         if ($this->debug) {

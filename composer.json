@@ -7,12 +7,13 @@
         "psr-4": { "Mcfedr\\ResqueQueueDriverBundle\\": "src/Mcfedr/ResqueQueueDriverBundle/"}
     },
     "autoload-dev": {
-        "psr-4": { "Mcfedr\\ResqueQueueDriverBundle\\" : "tests/Mcfedr/ResqueQueueDriverBundle/" }
+        "psr-4": { "Mcfedr\\ResqueQueueDriverBundle\\" : "tests/Mcfedr/ResqueQueueDriverBundle/" },
+        "classmap": ["tests/TestKernel.php"]
     },
     "require": {
         "php": ">=5.5",
         "symfony/symfony": "^2.8|^3.0",
-        "mcfedr/queue-manager-bundle": "^2.0",
+        "mcfedr/queue-manager-bundle": "^4.0",
         "mcfedr/php-resque": "~1.3",
         "mcfedr/php-resque-scheduler": "~1.4"
     },

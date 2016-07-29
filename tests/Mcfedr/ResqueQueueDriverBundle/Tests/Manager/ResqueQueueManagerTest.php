@@ -85,8 +85,14 @@ class ResqueQueueManagerTest extends \PHPUnit_Framework_TestCase
     {
         $job = $this->manager->put($name, $options);
 
-        $this->setExpectedException(WrongJobException::class);
+        $this->setExpectedException(NoSuchJobException::class);
         $this->manager->delete($job);
+    }
+
+    public function testDeleteWrongJob()
+    {
+        $this->setExpectedException(WrongJobException::class);
+        $this->manager->delete($this->getMockBuilder(\Mcfedr\QueueManagerBundle\Queue\Job::class)->getMock());
     }
 
     public function getValues()
