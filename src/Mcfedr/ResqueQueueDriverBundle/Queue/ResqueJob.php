@@ -47,9 +47,9 @@ class ResqueJob extends AbstractJob
      * @param string $class
      * @param bool $trackStatus
      */
-    public function __construct($resqueArguments, $options, $id, \DateTime $when = null, $queue, $class, $trackStatus)
+    public function __construct($resqueArguments, $id, \DateTime $when = null, $queue, $class, $trackStatus)
     {
-        parent::__construct($resqueArguments['name'], $resqueArguments['arguments'], $options);
+        parent::__construct($resqueArguments['name'], $resqueArguments['arguments']);
         $this->id = $id;
         $this->when = $when;
         $this->queue = $queue;

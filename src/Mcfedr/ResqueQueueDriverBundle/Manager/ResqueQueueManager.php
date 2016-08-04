@@ -34,9 +34,6 @@ class ResqueQueueManager implements QueueManager
      */
     private $trackStatus;
 
-    /**
-     * {@inheritdoc}
-     */
     public function __construct(array $options)
     {
         $this->defaultQueue = $options['default_queue'];
@@ -49,14 +46,6 @@ class ResqueQueueManager implements QueueManager
             }
         }
         $this->trackStatus = $options['track_status'];
-    }
-
-    /**
-     * @return array
-     */
-    private function getKernelOptions()
-    {
-        return $this->kernelOptions;
     }
 
     /**
@@ -73,9 +62,6 @@ class ResqueQueueManager implements QueueManager
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function put($name, array $arguments = [], array $options = [])
     {
         $queue = isset($options['queue']) ? $options['queue'] : $this->defaultQueue;
@@ -100,12 +86,9 @@ class ResqueQueueManager implements QueueManager
             }
         }
 
-        return new ResqueJob($resqueArguments, $options, $id, $when, $queue, \Mcfedr\ResqueQueueDriverBundle\Resque\Job::class, $trackJobStatus);
+        return new ResqueJob($resqueArguments, $id, $when, $queue, \Mcfedr\ResqueQueueDriverBundle\Resque\Job::class, $trackJobStatus);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function delete(Job $job)
     {
         if (!$job instanceof ResqueJob) {

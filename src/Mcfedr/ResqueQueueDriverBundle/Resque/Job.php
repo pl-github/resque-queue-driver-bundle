@@ -36,7 +36,7 @@ class Job
 
     public function perform()
     {
-        $this->getContainer()->get('mcfedr_queue_manager.job_executor')->executeJob(new ResqueJob($this->args, [], null, null, $this->queue, static::class, null));
+        $this->getContainer()->get('mcfedr_queue_manager.job_executor')->executeJob(new ResqueJob($this->args, null, null, $this->queue, static::class, null));
     }
 
     /**
