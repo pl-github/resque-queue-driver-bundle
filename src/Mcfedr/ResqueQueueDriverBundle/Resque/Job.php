@@ -37,7 +37,7 @@ class Job
 
     public function perform()
     {
-        if (!$this->args || !isset($this->args['name']) || !isset($this->args['arguments']) || !isset($this->args['kernel_options'])) {
+        if (!is_array($this->args) || !isset($this->args['name']) || !isset($this->args['arguments']) || !isset($this->args['kernel_options'])) {
             throw new UnexpectedJobDataException('Resque message missing data fields name, arguments and kernel_options');
         }
 
