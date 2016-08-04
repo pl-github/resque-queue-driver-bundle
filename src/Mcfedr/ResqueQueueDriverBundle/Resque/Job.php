@@ -5,6 +5,7 @@
 
 namespace Mcfedr\ResqueQueueDriverBundle\Resque;
 
+use Mcfedr\QueueManagerBundle\Exception\UnexpectedJobDataException;
 use Mcfedr\ResqueQueueDriverBundle\Queue\ResqueJob;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Finder\Finder;
@@ -36,6 +37,10 @@ class Job
 
     public function perform()
     {
+        if (!$this->args || !isset($this->args['name']) || !isset($this->args['arguments']) || !isset($this->args['kernel_options'])) {
+            throw new UnexpectedJobDataException('Resque message missing data fields name, arguments and kernel_options');
+        }
+
         $this->getContainer()->get('mcfedr_queue_manager.job_executor')->executeJob(new ResqueJob($this->args, null, null, $this->queue, static::class, null));
     }
 
