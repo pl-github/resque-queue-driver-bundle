@@ -76,7 +76,13 @@ class ResqueQueueManager implements QueueManager
 
         $id = null;
 
-        $when = isset($options['when']) ? $options['when'] : null;
+        if (isset($options['time'])) {
+            $when = $options['time'];
+        } elseif (isset($options['delay'])) {
+            $when = time() + $options['delay'];
+        } else {
+            $when = null;
+        }
 
         if (!$this->debug) {
             if ($when) {

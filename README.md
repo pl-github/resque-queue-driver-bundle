@@ -40,9 +40,11 @@ This will create a `QueueManager` service named `"mcfedr_queue_manager.default"`
 
 * `host` and `port` - Where is your Redis server
 * `default_queue` - Name of the default queue to use
-* `track_status` - Set to `true` to enable extra job tracking data to be stored in redis. Useful for debugging.
+* `track_status` - Set to `true` to enable extra job tracking data to be stored in redis. Useful for debugging
 
 ## Options to `QueueManager::put`
 
-* `when` - A `DateTime` object for when to perform the job, allows future scheduling
 * `queue` - A `string` with the name of a queue
+* `time` - A `\DateTime` object of when to schedule this job 
+* `delay` - Number of seconds from now to schedule this job
+* `track_status` - Set to `true` to enable extra job tracking data to be stored in redis. Useful for debugging
