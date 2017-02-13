@@ -11,6 +11,9 @@ matrix:
     allow_failures:
         - php: hhvm
 
+services:
+    - redis-server
+
 before_script:
     - composer selfupdate
     - composer install --prefer-source
