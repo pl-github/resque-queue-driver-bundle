@@ -39,7 +39,7 @@ class ResqueQueueManagerTest extends \PHPUnit_Framework_TestCase
     {
         $value = $this->manager->put($name, $options, [
             'queue' => $queue,
-            'when' => new \DateTime($when)
+            'time' => new \DateTime($when)
         ]);
         $this->assertInstanceOf(ResqueJob::class, $value);
         $this->assertTrue($value->isFutureJob());
@@ -69,7 +69,7 @@ class ResqueQueueManagerTest extends \PHPUnit_Framework_TestCase
     {
         $job = $this->manager->put($name, $options, [
             'queue' => $queue,
-            'when' => (new \DateTime($when))->add(new \DateInterval('P1M'))
+            'time' => (new \DateTime($when))->add(new \DateInterval('P1M'))
         ]);
         $this->manager->delete($job);
 
