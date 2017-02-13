@@ -4,20 +4,18 @@ namespace Mcfedr\ResqueQueueDriverBundle\DependencyInjection;
 
 use Mcfedr\ResqueQueueDriverBundle\Manager\ResqueQueueManager;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\DependencyInjection\Loader;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
 class McfedrResqueQueueDriverExtension extends Extension implements PrependExtensionInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -44,9 +42,9 @@ class McfedrResqueQueueDriverExtension extends Extension implements PrependExten
                             'host' => '127.0.0.1',
                             'port' => 6379,
                             'kernel_options' => [
-                                'kernel.root_dir'=> $container->getParameter('kernel.root_dir'),
-                                'kernel.environment'=> $container->getParameter('kernel.environment'),
-                                'kernel.debug'=> $container->getParameter('kernel.debug')
+                                'kernel.root_dir' => $container->getParameter('kernel.root_dir'),
+                                'kernel.environment' => $container->getParameter('kernel.environment'),
+                                'kernel.debug' => $container->getParameter('kernel.debug')
                             ],
                             'track_status' => false,
                             'default_queue' => 'default'

@@ -1,7 +1,4 @@
 <?php
-/**
- * Created by mcfedr on 03/06/2014 22:00
- */
 
 namespace Mcfedr\ResqueQueueDriverBundle\Resque;
 
@@ -12,12 +9,6 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\HttpKernel\KernelInterface;
 
-/**
- * Class Job
- * @package Mcfedr\ResqueQueueDriverBundle\Resque
- *
- * This is the job that Resque will run, commands are then run within the symfony container
- */
 class Job
 {
     /**
@@ -63,7 +54,7 @@ class Job
     }
 
     /**
-     * This is largely copied from how the test client finds and setups a kernel
+     * This is largely copied from how the test client finds and setups a kernel.
      *
      * @return KernelInterface
      */

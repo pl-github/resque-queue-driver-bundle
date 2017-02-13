@@ -1,7 +1,4 @@
 <?php
-/**
- * Created by mcfedr on 03/06/2014 22:02
- */
 
 namespace Mcfedr\ResqueQueueDriverBundle\Queue;
 
@@ -30,7 +27,7 @@ class ResqueJob extends AbstractJob
     private $class;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $trackStatus;
 
@@ -41,11 +38,12 @@ class ResqueJob extends AbstractJob
 
     /**
      * ResqueJob constructor.
-     * @param string $id
+     *
+     * @param string    $id
      * @param \DateTime $when
-     * @param string $queue
-     * @param string $class
-     * @param bool $trackStatus
+     * @param string    $queue
+     * @param string    $class
+     * @param bool      $trackStatus
      */
     public function __construct($resqueArguments, $id, \DateTime $when = null, $queue, $class, $trackStatus)
     {
@@ -91,7 +89,7 @@ class ResqueJob extends AbstractJob
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isTrackStatus()
     {
@@ -108,6 +106,6 @@ class ResqueJob extends AbstractJob
 
     public function isFutureJob()
     {
-        return !!$this->getWhen();
+        return (bool) $this->getWhen();
     }
 }

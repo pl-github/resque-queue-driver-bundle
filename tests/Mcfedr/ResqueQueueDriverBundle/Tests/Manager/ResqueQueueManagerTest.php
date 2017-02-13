@@ -1,7 +1,4 @@
 <?php
-/**
- * Created by mcfedr on 04/02/2016 10:22
- */
 
 namespace Mcfedr\ResqueQueueDriverBundle\Tests\Manager;
 
@@ -13,7 +10,9 @@ use Mcfedr\ResqueQueueDriverBundle\Resque\Job;
 
 class ResqueQueueManagerTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var ResqueQueueManager */
+    /**
+     * @var ResqueQueueManager
+     */
     protected $manager;
 
     public function setUp()
@@ -25,7 +24,7 @@ class ResqueQueueManagerTest extends \PHPUnit_Framework_TestCase
             'kernel_options' => [
                 'kernel.root_dir' => __DIR__,
                 'kernel.environment' => 'test',
-                'kernel.debug'=> true
+                'kernel.debug' => true
             ],
             'debug' => false,
             'prefix' => 'tests:',

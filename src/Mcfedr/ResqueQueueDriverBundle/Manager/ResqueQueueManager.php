@@ -1,7 +1,4 @@
 <?php
-/**
- * Created by mcfedr on 03/06/2014 21:50
- */
 
 namespace Mcfedr\ResqueQueueDriverBundle\Manager;
 
@@ -30,7 +27,7 @@ class ResqueQueueManager implements QueueManager
     private $debug;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $trackStatus;
 
@@ -48,10 +45,7 @@ class ResqueQueueManager implements QueueManager
         $this->trackStatus = $options['track_status'];
     }
 
-    /**
-     * @param array $kernelOptions
-     */
-    private function setKernelOptions($kernelOptions)
+    private function setKernelOptions(array $kernelOptions)
     {
         $this->kernelOptions = $kernelOptions;
 
