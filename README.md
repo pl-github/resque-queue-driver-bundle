@@ -6,6 +6,19 @@ A driver for [Queue Manager Bundle](https://github.com/mcfedr/queue-manager-bund
 [![License](https://poser.pugx.org/mcfedr/resque-queue-driver-bundle/license.png)](https://packagist.org/packages/mcfedr/resque-queue-driver-bundle)
 [![Build Status](https://travis-ci.org/mcfedr/resque-queue-driver-bundle.svg?branch=master)](https://travis-ci.org/mcfedr/resque-queue-driver-bundle)
 
+## Usage
+
+[PHP Resque](https://github.com/chrisboulton/php-resque) installs two commands into your bin folder.
+Generally you should run just one instance of `resque-scheduler` and several of `resque`.
+
+```bash
+QUEUE=default APP_INCLUDE=var/bootstrap.php.cache REDIS_BACKEND=127.0.0.1:6379 ./vendor/bin/resque
+PREFIX="my_app:" REDIS_BACKEND=127.0.0.1:6379 ./vendor/bin/resque-scheduler
+```
+
+Add `VVERBOSE=1` to the environment to get more logging.
+
+
 ## Install
 
 ### Composer
@@ -34,7 +47,7 @@ With this bundle installed you can setup your queue manager config similar to th
                 options:
                     host: 127.0.0.1
                     port: 11300
-                    default_queue: mcfedr_queue
+                    default_queue: default
                     track_status: false
 
 This will create a `QueueManager` service named `"mcfedr_queue_manager.default"`
