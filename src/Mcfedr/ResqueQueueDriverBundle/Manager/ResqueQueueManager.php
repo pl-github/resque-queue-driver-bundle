@@ -63,7 +63,7 @@ class ResqueQueueManager implements QueueManager
         $resqueArguments = [
             'name' => $name,
             'arguments' => $arguments,
-            'kernel_options' => $this->kernelOptions
+            'kernel_options' => $this->kernelOptions,
         ];
 
         $trackJobStatus = isset($options['track_status']) ? $options['track_status'] : $this->trackStatus;

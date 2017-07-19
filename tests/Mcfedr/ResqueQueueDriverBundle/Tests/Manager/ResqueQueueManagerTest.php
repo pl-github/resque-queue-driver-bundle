@@ -24,11 +24,11 @@ class ResqueQueueManagerTest extends \PHPUnit_Framework_TestCase
             'kernel_options' => [
                 'kernel.root_dir' => __DIR__,
                 'kernel.environment' => 'test',
-                'kernel.debug' => true
+                'kernel.debug' => true,
             ],
             'debug' => false,
             'prefix' => 'tests:',
-            'track_status' => false
+            'track_status' => false,
         ]);
     }
 
@@ -39,7 +39,7 @@ class ResqueQueueManagerTest extends \PHPUnit_Framework_TestCase
     {
         $value = $this->manager->put($name, $options, [
             'queue' => $queue,
-            'time' => new \DateTime($when)
+            'time' => new \DateTime($when),
         ]);
         $this->assertInstanceOf(ResqueJob::class, $value);
         $this->assertTrue($value->isFutureJob());
@@ -53,7 +53,7 @@ class ResqueQueueManagerTest extends \PHPUnit_Framework_TestCase
     public function testPutNow($name, $options, $queue, $when)
     {
         $value = $this->manager->put($name, $options, [
-            'queue' => $queue
+            'queue' => $queue,
         ]);
         $this->assertInstanceOf(ResqueJob::class, $value);
         $this->assertFalse($value->isFutureJob());
@@ -69,7 +69,7 @@ class ResqueQueueManagerTest extends \PHPUnit_Framework_TestCase
     {
         $job = $this->manager->put($name, $options, [
             'queue' => $queue,
-            'time' => (new \DateTime($when))->add(new \DateInterval('P1M'))
+            'time' => (new \DateTime($when))->add(new \DateInterval('P1M')),
         ]);
         $this->manager->delete($job);
 
@@ -98,7 +98,7 @@ class ResqueQueueManagerTest extends \PHPUnit_Framework_TestCase
     {
         return [
             ['test', [], 'default', 'next TUE 11:00'],
-            ['test1', [], 'default', 'next WED 21:00']
+            ['test1', [], 'default', 'next WED 21:00'],
         ];
     }
 }

@@ -15,8 +15,8 @@ class JobTest extends \PHPUnit_Framework_TestCase
             'kernel_options' => [
                 'kernel.root_dir' => '../../../../tests/',
                 'kernel.environment' => 'test',
-                'kernel.debug' => true
-            ]
+                'kernel.debug' => true,
+            ],
         ];
         $job->perform();
     }

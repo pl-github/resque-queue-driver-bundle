@@ -63,7 +63,7 @@ class Job
         $iterator = (new Finder())
             ->name('*Kernel.php')
             ->depth(0)
-            ->in(__DIR__ . '/' . $this->args['kernel_options']['kernel.root_dir'])
+            ->in(__DIR__.'/'.$this->args['kernel_options']['kernel.root_dir'])
             ->getIterator();
         $iterator->rewind(); //Seems weird that I have rewind a new iterator, but I do
         /** @var SplFileInfo $file */

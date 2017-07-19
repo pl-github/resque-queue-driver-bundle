@@ -44,13 +44,13 @@ class McfedrResqueQueueDriverExtension extends Extension implements PrependExten
                             'kernel_options' => [
                                 'kernel.root_dir' => $container->getParameter('kernel.root_dir'),
                                 'kernel.environment' => $container->getParameter('kernel.environment'),
-                                'kernel.debug' => $container->getParameter('kernel.debug')
+                                'kernel.debug' => $container->getParameter('kernel.debug'),
                             ],
                             'track_status' => false,
-                            'default_queue' => 'default'
-                        ]
-                    ]
-                ]
+                            'default_queue' => 'default',
+                        ],
+                    ],
+                ],
             ]);
         }
     }
