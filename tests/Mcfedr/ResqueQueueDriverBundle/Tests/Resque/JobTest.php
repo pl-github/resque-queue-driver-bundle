@@ -3,6 +3,7 @@
 namespace Mcfedr\ResqueQueueDriverBundle\Tests\Resque\Job;
 
 use Mcfedr\ResqueQueueDriverBundle\Resque\Job;
+use Mcfedr\ResqueQueueDriverBundle\Worker\TestWorker;
 
 class JobTest extends \PHPUnit_Framework_TestCase
 {
@@ -10,7 +11,7 @@ class JobTest extends \PHPUnit_Framework_TestCase
     {
         $job = new Job();
         $job->args = [
-            'name' => 'test_worker',
+            'name' => TestWorker::class,
             'arguments' => ['first' => 1, 'second' => 'second'],
             'kernel_options' => [
                 'kernel.root_dir' => '../../../../tests/',

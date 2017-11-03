@@ -19,7 +19,7 @@ monolog:
             type: console
 
 services:
-    test_worker:
+    Mcfedr\ResqueQueueDriverBundle\Worker\TestWorker:
         class: Mcfedr\ResqueQueueDriverBundle\Worker\TestWorker
         arguments:
             - "@logger"
