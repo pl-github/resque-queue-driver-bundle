@@ -21,5 +21,6 @@ monolog:
 services:
     Mcfedr\ResqueQueueDriverBundle\Worker\TestWorker:
         class: Mcfedr\ResqueQueueDriverBundle\Worker\TestWorker
+        public: true
         arguments:
             - "@logger"
