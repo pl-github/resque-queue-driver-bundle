@@ -45,7 +45,7 @@ class Job
      */
     private function getContainer()
     {
-        if ($this->kernel === null) {
+        if (null === $this->kernel) {
             $this->kernel = $this->createKernel();
             $this->kernel->boot();
         }
